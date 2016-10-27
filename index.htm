@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/*top horizontal navigation bar*/
+ul.topBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #111;
+}
+/*verticle menu for node information*/
+ul.sideBar{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #333;
+}
+/*div for availability zone*/
+div.aZone {
+    width: 320px;
+    height: 500px;
+    padding: 10px;
+    background-color: #999;
+    border: 5px solid gray;
+    float: left; /* add this */
+}
+/*div for slave node*/
+div.sNode {
+    width: 285px;
+    height: 200px;
+    padding: 10px;
+    background-color: #357;
+    border: 5px solid gray;
+    float: left; /* add this */
+}
+/*div for master node*/
+div.mNode {
+    width: 285px;
+    height: 200px;
+    padding: 10px;
+    background-color: #256;
+    border: 5px solid gray;
+    float: left; /* add this */
+}
+/*div that contains the availability zone*/
+div.wrapper {
+    overflow: auto; /* will contain if #first is longer than #second */
+    float: left;
+}
+body {
+    white-space: nowrap;
+}
+/*code for the drop down buttons on the side navigation bar*/
+/* Dropdown Button */
+div.dropbtn {
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+   border: none;
+   cursor: pointer;
+   float: left;
+}
+
+/* Dropdown button on hover & focus */
+div.dropbtn:hover, .dropbtn:focus {
+   background-color: #3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown content */
+div.dropdown {
+   position: relative;
+   display: block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+div.dropdown-content {
+   display: none;
+   /*position: absolute;*/
+   background-color: white;
+   min-width: 200px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+
+/* Links inside the dropdown */
+div.dropdown-content a {
+   color: white;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+</style>
+</head>
+   <body style="background-color=#111">
+     <ul class="topBar">
+       <li style="padding-left: 200px;"><a class="active" href="#home">Home</a></li>
+       <li><a href="#news">Cluster Configuration</a></li>
+       <li><a href="#contact">Test</a></li>
+       <li><a href="#about">Help</a></li>
+     </ul>
+     <div class="wrapper">
+         <ul class="sideBar">
+           <li><a href="#information">NodeInformation</a></li>
+           <li><a href="#hashSlot">ConfigurureHashSlot</a></li>
+           <div class="dropdown">
+            <div onclick="myFunction()" class="dropbtn">DropDownTest</div>
+            <div id="myDropdown" class="dropdown-content" display="none">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div>
+         </ul>
+      </div>
+         <div class="aZone">AvailabilityZone
+           <div class="mNode">
+             Master: 127.0.0.1
+           </div>
+         </div>
+       <div class="aZone">AvailabilityZone</div>
+       <div class="aZone">AvailabilityZone</div>
+
+    <!--  <form action = "http://127.0.0.1:8081/process_get" method = "GET">
+         First Name: <input type = "text" name = "first_name">  <br>
+         Last Name: <input type = "text" name = "last_name">
+         <input type = "submit" value = "Submit">
+      </form>
+    -->
+   </body>
+</html>
+<script type="text/javascript">
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    var ele = document.getElementById("myDropdown");
+    console.log(ele);
+    if(ele.display == "none") {
+
+          ele.display = "show";
+          console.log(ele);
+      }
+
+    else {
+
+      ele.display = "none";
+      console.log(ele);
+    }
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
